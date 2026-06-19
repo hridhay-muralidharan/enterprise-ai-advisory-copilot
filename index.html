@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Enterprise AI Advisory Co-Pilot prototype for structured AI solutioning and deployment readiness.">
+    <title>Enterprise AI Advisory Co-Pilot</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <p class="eyebrow">Enterprise AI Advisory Co-Pilot</p>
+          <h1>AI solutioning workbench</h1>
+          <p>For enterprise AI adoption teams turning ambition into governed, deployable workflows.</p>
+        </div>
+
+        <nav class="nav" aria-label="Prototype sections">
+          <a id="navProduct" href="#/product" class="nav-link">Product</a>
+          <a id="navWorkbench" href="#/demo" class="nav-link">Demo</a>
+          <a id="navDetails" href="#/details" class="nav-link">Evidence</a>
+        </nav>
+      </header>
+
+      <main id="main" class="main">
+        <section id="productView" class="view" aria-label="Product landing page">
+          <section class="hero" aria-label="Enterprise AI adoption pain">
+            <img class="hero-image" src="./assets/workbench-preview.png" alt="Enterprise AI Advisory Co-Pilot workbench preview">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+              <p class="eyebrow">Enterprise AI Adoption</p>
+              <h2>Enterprise AI deployment is a context orchestration problem.</h2>
+              <p>Workflow details, knowledge quality, agent boundaries, governance gates, evaluation criteria, adoption, and value proof move together. The co-pilot turns each client input into connected advisory decisions.</p>
+              <div class="hero-actions">
+                <a class="button primary" href="#/demo">View the demo</a>
+                <a class="button hero-secondary" href="#/details">Inspect evidence model</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="landing-section">
+            <div class="section-heading">
+              <p class="eyebrow">The Operating Gap</p>
+              <h2>The AI delivery gap sits between SDLC control and enterprise operating reality.</h2>
+              <p>Enterprise software delivery works well when requirements, statuses, handoffs, and outputs can be made deterministic. AI deployment adds probabilistic behavior, changing context, knowledge quality, policy boundaries, and human review design.</p>
+            </div>
+            <div class="pain-grid">
+              <article class="pain-card">
+                <span>01</span>
+                <h3>Context changes solution design</h3>
+                <p>Business goals, frontline workflow, exception paths, and tacit knowledge shape what the AI system should assist.</p>
+              </article>
+              <article class="pain-card">
+                <span>02</span>
+                <h3>Knowledge quality changes reliability</h3>
+                <p>Policies, historical cases, approvals, and expert judgment need source ownership, freshness, and evaluation examples.</p>
+              </article>
+              <article class="pain-card">
+                <span>03</span>
+                <h3>Agent boundaries drive feasibility</h3>
+                <p>Read/write permissions, tool access, identity, and confidence thresholds define safe action scope for version one.</p>
+              </article>
+              <article class="pain-card">
+                <span>04</span>
+                <h3>Governance and adoption shape launch readiness</h3>
+                <p>Audit logs, review gates, incident paths, training, and value metrics determine deployment confidence.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="landing-section solution-section">
+            <div class="section-heading">
+              <p class="eyebrow">The Product Idea</p>
+              <h2>A co-pilot for enterprise AI solutioning from ambition to deployment readiness.</h2>
+              <p>The prototype simulates how advisory teams can confirm messy client inputs and keep the operating model current across business, workflow, technical, governance, deployment, and value workstreams.</p>
+            </div>
+            <div class="solution-grid">
+              <article>
+                <h3>Confirm client inputs</h3>
+                <p>Each prompt represents a realistic update from discovery, IT, compliance, delivery, or operations.</p>
+              </article>
+              <article>
+                <h3>Update advisory workstreams</h3>
+                <p>The co-pilot turns inputs into facts, missing evidence, risks, decisions, and next questions.</p>
+              </article>
+              <article>
+                <h3>Expose pilot readiness</h3>
+                <p>The readiness score changes as constraints become clearer and launch readiness becomes evidence-based.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="landing-section use-case-section">
+            <div>
+              <p class="eyebrow">Defined Demo Use Case</p>
+              <h2>High-volume enterprise service workflow</h2>
+              <p>The demo follows a business sponsor trying to use GenAI to reduce manual effort in a high-volume service workflow. The co-pilot helps narrow the pilot into a bounded, governed, read-heavy assistant with review gates and balanced value metrics.</p>
+            </div>
+            <div class="use-case-panel">
+              <h3>What you will see</h3>
+              <ul>
+                <li>Ambiguous AI demand converted into opportunity definition.</li>
+                <li>Workflow exceptions changing solution scope.</li>
+                <li>System access constraints narrowing the pilot.</li>
+                <li>Governance gates reshaping the AI role.</li>
+                <li>Value metrics balancing productivity, quality, adoption, and risk.</li>
+              </ul>
+              <a class="button primary" href="#/demo">Start demo</a>
+            </div>
+          </section>
+        </section>
+
+        <section id="workbenchView" class="view" aria-label="Workbench">
+          <div class="workbench-grid">
+            <section class="panel primary-panel">
+              <div class="panel-header split">
+                <div>
+                  <p class="eyebrow">Prompt Console</p>
+                  <h2 id="scenarioTitle">Client AI ambition enters intake</h2>
+                </div>
+                <div class="status-row" aria-label="Prompt progress">
+                  <span id="stepCounter" class="pill">Input 1 of 9</span>
+                  <span id="confirmState" class="pill warning">Awaiting confirmation</span>
+                </div>
+              </div>
+
+              <div class="prompt-stage">
+                <article class="prompt-card" aria-label="Draft prompt">
+                  <div class="message-label">
+                    <span>Drafted client input</span>
+                    <span id="promptMeta">Awaiting confirmation</span>
+                  </div>
+                  <pre id="promptText"></pre>
+                </article>
+              </div>
+
+              <div class="action-bar" aria-label="Prompt controls">
+                <button id="backBtn" class="button secondary" type="button">Back</button>
+                <button id="confirmBtn" class="button primary" type="button">Confirm prompt</button>
+                <button id="nextBtn" class="button secondary" type="button">Next prompt</button>
+                <button id="resetBtn" class="button ghost" type="button">Reset</button>
+              </div>
+              <div class="evidence-cta" aria-label="Evidence details">
+                <p>Trace how confirmed inputs update facts, risks, decisions, and next questions across every advisory workstream.</p>
+                <a class="button secondary" href="#/details">Review all workstream evidence</a>
+              </div>
+            </section>
+
+            <aside class="side-stack" aria-label="Project state">
+              <section class="panel state-panel">
+                <div class="panel-header">
+                  <p class="eyebrow">Readiness</p>
+                  <h2 id="readinessLabel">Intake pending</h2>
+                </div>
+                <div class="panel-body">
+                  <div class="readiness-score">
+                    <strong id="readinessScore">0%</strong>
+                    <span>pilot confidence</span>
+                  </div>
+                  <div class="progress-track" aria-hidden="true">
+                    <div id="readinessBar" class="progress-fill"></div>
+                  </div>
+                  <div class="metric-row">
+                    <div>
+                      <strong id="updatedCount">0</strong>
+                      <span>workstreams</span>
+                    </div>
+                    <div>
+                      <strong id="riskCount">0</strong>
+                      <span>active risks</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="panel">
+                <div class="panel-header">
+                  <p class="eyebrow">Current Input</p>
+                  <h2>Affected workstreams</h2>
+                </div>
+                <div class="panel-body">
+                  <div id="affectedList" class="chip-list"></div>
+                </div>
+              </section>
+
+            </aside>
+          </div>
+        </section>
+
+        <section id="detailsView" class="view" aria-label="Workstream details">
+          <div class="details-grid">
+            <aside class="panel">
+              <div class="panel-header">
+                <p class="eyebrow">Workstreams</p>
+                <h2>Evidence board</h2>
+              </div>
+              <div class="panel-body">
+                <div id="workstreamList" class="workstream-list"></div>
+              </div>
+            </aside>
+
+            <section class="panel">
+              <div class="panel-header split">
+                <div>
+                  <p class="eyebrow">Selected Workstream</p>
+                  <h2 id="detailTitle">Opportunity Diagnosis</h2>
+                </div>
+                <span id="detailStatus" class="status">Intake Pending</span>
+              </div>
+              <div class="panel-body">
+                <div class="detail-grid">
+                  <article class="detail-card">
+                    <h3>Logged Evidence</h3>
+                    <ul id="loggedEvidence"></ul>
+                  </article>
+                  <article class="detail-card">
+                    <h3>Missing Evidence</h3>
+                    <ul id="missingEvidence"></ul>
+                  </article>
+                  <article class="detail-card">
+                    <h3>Risks Flagged</h3>
+                    <ul id="risksFlagged"></ul>
+                  </article>
+                  <article class="detail-card">
+                    <h3>Decisions Made</h3>
+                    <ul id="decisionsMade"></ul>
+                  </article>
+                  <article class="detail-card wide">
+                    <h3>Next Questions</h3>
+                    <ul id="nextQuestions"></ul>
+                  </article>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <div id="updateModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalSummary" hidden>
+      <section class="modal">
+        <header class="modal-header">
+          <div>
+            <p class="eyebrow">Workstreams Updated</p>
+            <h2 id="modalTitle">Prompt confirmed</h2>
+            <p id="modalSummary">The advisory model has been updated.</p>
+          </div>
+          <button id="closeModalBtn" class="icon-button" type="button" aria-label="Close update summary">×</button>
+        </header>
+        <div class="modal-interpretation">
+          <p class="eyebrow">Co-Pilot Interpretation</p>
+          <p id="modalInterpretation"></p>
+        </div>
+        <div id="modalUpdates" class="modal-body"></div>
+        <footer class="modal-footer">
+          <button id="knowMoreBtn" class="button secondary" type="button">Know more</button>
+          <button id="continueBtn" class="button primary" type="button">Continue</button>
+        </footer>
+      </section>
+    </div>
+
+    <script src="./data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
