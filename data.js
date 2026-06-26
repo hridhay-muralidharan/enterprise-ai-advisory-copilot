@@ -1,297 +1,294 @@
 window.COPILOT_WORKSTREAMS = [
-  "Citizen Intake",
-  "Jurisdiction And Ownership",
-  "Evidence Collection",
-  "Stakeholder Coordination",
-  "Scheme And Initiative Tracking",
-  "Parliamentary Research",
-  "Public Communication",
-  "Follow-Up And Closure",
-  "Governance And Privacy",
-  "Institutional Memory"
+  "Opportunity Diagnosis",
+  "Workflow Discovery",
+  "Data And Systems",
+  "Knowledge And Policy",
+  "Solution Architecture",
+  "Agent Role Design",
+  "Orchestration",
+  "Governance",
+  "Deployment And Adoption",
+  "Value And Readiness"
 ];
 
 window.COPILOT_STEPS = [
   {
-    title: "Civic issue enters intake",
-    readiness: 16,
-    label: "Case framed",
-    prompt: "Residents from a Bengaluru South ward say a proposed road expansion and flyover package may worsen local traffic, remove trees, and affect pedestrians. They mention there was no clear public consultation and ask the MP office to intervene before the project moves ahead.",
-    response: "The input is a civic case, not a generic complaint. The office needs to preserve the citizen concern, identify the exact location and project reference, separate claims from evidence, and decide whether the first action is information gathering, consultation support, or escalation.",
-    affected: ["Citizen Intake", "Evidence Collection", "Jurisdiction And Ownership", "Public Communication"],
-    select: "Citizen Intake",
+    title: "Client AI ambition enters intake",
+    readiness: 18,
+    label: "Opportunity framed",
+    prompt: "A business sponsor wants to use GenAI to reduce manual effort in a high-volume service workflow. The early ask is broad: improve response speed, reduce handoffs, and make frontline teams more consistent.",
+    response: "The input needs advisory intake. The co-pilot converts the ambition into target workflow, business pain, users, baseline metrics, sponsor ownership, and value hypothesis.",
+    affected: ["Opportunity Diagnosis", "Workflow Discovery", "Value And Readiness"],
+    select: "Opportunity Diagnosis",
     updates: {
-      "Citizen Intake": {
+      "Opportunity Diagnosis": {
         status: "in_discovery",
-        note: "Citizen concern converted into a structured civic case.",
-        logged: ["Concern: road expansion and flyover package may affect traffic, trees, pedestrians, and consultation quality.", "Request: MP office intervention before project progress."],
-        missing: ["Exact location and ward.", "Project name or tender reference.", "Photos, maps, complaint IDs, or meeting records.", "Number of affected residents and groups."],
-        risks: ["The office may respond to emotion before verifying the project facts."],
-        questions: ["What is the exact project, who raised the issue, and what evidence has already been collected?"]
+        note: "AI ambition translated into opportunity definition.",
+        logged: ["Target area: high-volume service workflow.", "Business goals: faster responses, fewer handoffs, more consistent frontline execution."],
+        missing: ["Named workflow owner.", "Current volume and cycle time.", "Cost of delay or rework.", "Baseline quality metric."],
+        risks: ["The team may chase a demo ahead of clear workflow value proof."],
+        questions: ["Which exact workflow is painful enough, frequent enough, and measurable enough for an AI pilot?"]
       },
-      "Evidence Collection": {
+      "Workflow Discovery": {
         status: "missing_evidence",
-        note: "Core evidence is still absent.",
-        missing: ["DPR or project brief.", "Traffic study.", "Tree impact note.", "Public consultation record.", "Budget source and implementing agency."],
-        questions: ["Which documents must be obtained before the office takes a public position?"]
+        note: "Workflow still too broad.",
+        missing: ["Trigger.", "Start and end state.", "Actors.", "Systems used.", "Decision points.", "Exception paths."],
+        questions: ["What happens from request intake to resolution today?"]
       },
-      "Jurisdiction And Ownership": {
+      "Value And Readiness": {
         status: "missing_evidence",
-        note: "Authority map pending.",
-        missing: ["Implementing agency.", "Approving department.", "State and city-level owners.", "Any central government linkage."],
-        risks: ["The office may be blamed for decisions outside its direct authority if ownership is unclear."]
-      },
-      "Public Communication": {
-        status: "at_risk",
-        note: "Public response requires evidence discipline.",
-        missing: ["Verified facts.", "Current status of project.", "Office action boundary."],
-        risks: ["Premature messaging can create commitments the office cannot responsibly keep."]
+        note: "No baseline yet.",
+        missing: ["Baseline effort.", "Baseline cycle time.", "Baseline quality.", "Adoption target."],
+        risks: ["Missing baseline metrics can shift pilot evaluation toward demo usefulness over production value."]
       }
     }
   },
   {
-    title: "Jurisdiction map changes the action route",
-    readiness: 28,
-    label: "Ownership emerging",
-    prompt: "Initial review suggests BBMP and a state-level urban mobility body own the project. The MP office can support public consultation, request documents, coordinate with citizen groups, and raise central-government dependencies if any are found.",
-    response: "The office role becomes sharper. Direct execution may sit elsewhere, but the MP office can still add value through evidence requests, public consultation discipline, stakeholder convening, and parliamentary or ministry routes when the facts justify it.",
-    affected: ["Jurisdiction And Ownership", "Stakeholder Coordination", "Parliamentary Research", "Public Communication"],
-    select: "Jurisdiction And Ownership",
+    title: "Workflow map reveals exceptions",
+    readiness: 29,
+    label: "Workflow shape emerging",
+    prompt: "Discovery shows three common paths: routine requests, policy-sensitive exceptions, and cases requiring manager approval. Teams use the official process, informal notes, and side-channel escalation.",
+    response: "The co-pilot separates the happy path from exception paths. The real workflow includes informal knowledge and approval logic, which affects agent scope, orchestration, governance, and adoption.",
+    affected: ["Workflow Discovery", "Knowledge And Policy", "Orchestration", "Governance"],
+    select: "Workflow Discovery",
     updates: {
-      "Jurisdiction And Ownership": {
-        status: "in_discovery",
-        note: "Primary ownership sits with city and state actors.",
-        logged: ["Likely owners: BBMP and state-level urban mobility authority.", "MP office role: document request, citizen consultation support, convening, and escalation where justified."],
-        missing: ["Named official owner.", "Current project approval status.", "Legal route for public consultation.", "Central ministry or railway dependency, if any."],
-        decisions: ["Frame the office role as evidence-led coordination and escalation within authority limits."],
-        questions: ["Which action is available to the MP office today without overstating direct control?"]
-      },
-      "Stakeholder Coordination": {
-        status: "missing_evidence",
-        note: "Stakeholder list needs depth.",
-        missing: ["Resident welfare associations.", "Ward-level leaders.", "Traffic experts.", "Pedestrian and accessibility groups.", "Relevant officials."],
-        questions: ["Who must be heard before the office treats this as a representative public concern?"]
-      },
-      "Parliamentary Research": {
-        status: "missing_evidence",
-        note: "Parliamentary route depends on central linkage.",
-        missing: ["Whether the project uses central funds, national policy, rail, highway, environment, or metro dependencies."],
-        risks: ["A parliamentary question may be weak if the matter is purely city or state execution."]
-      },
-      "Public Communication": {
-        status: "ready_for_review",
-        note: "Communication boundary clarified.",
-        decisions: ["Public note should say the office is seeking documents and consultation clarity before forming a final view."]
-      }
-    }
-  },
-  {
-    title: "Evidence request becomes the first operating task",
-    readiness: 39,
-    label: "Evidence plan active",
-    prompt: "The team decides to request the DPR, traffic impact study, tree and pedestrian impact assessment, consultation notice, minutes of any public meeting, budget note, and implementation timeline. Volunteers can collect photos and citizen statements from the affected stretches.",
-    response: "The case now has an evidence plan. The co-pilot separates official documents from field evidence and citizen testimony, then assigns each evidence type to an owner and review path.",
-    affected: ["Evidence Collection", "Stakeholder Coordination", "Follow-Up And Closure", "Governance And Privacy"],
-    select: "Evidence Collection",
-    updates: {
-      "Evidence Collection": {
-        status: "ready_for_review",
-        note: "Evidence checklist and collection routes defined.",
-        logged: ["Requested documents: DPR, traffic impact study, tree and pedestrian assessment, consultation notice, meeting minutes, budget note, implementation timeline.", "Field evidence: photos and citizen statements from affected stretches."],
-        missing: ["Document request recipient.", "Date by which documents are expected.", "Format for volunteer field submissions."],
-        decisions: ["Separate official documents, field observations, and citizen testimony in the evidence pack."]
-      },
-      "Stakeholder Coordination": {
-        status: "in_discovery",
-        note: "Volunteer role introduced.",
-        logged: ["Volunteers can collect photos and citizen statements."],
-        missing: ["Volunteer briefing note.", "Verification rules.", "Escalation owner for sensitive claims."]
-      },
-      "Follow-Up And Closure": {
-        status: "missing_evidence",
-        note: "Follow-up cadence needed.",
-        missing: ["Document request date.", "Reminder schedule.", "Escalation threshold.", "Closure definition."]
-      },
-      "Governance And Privacy": {
-        status: "at_risk",
-        note: "Citizen statements need privacy controls.",
-        missing: ["Consent language.", "Personal-data minimization.", "Storage owner.", "Public-use approval rule."],
-        risks: ["Citizen identities and locations may be exposed if field evidence is handled casually."]
-      }
-    }
-  },
-  {
-    title: "Public consultation becomes a workstream",
-    readiness: 49,
-    label: "Consultation route shaped",
-    prompt: "Citizen groups ask for a public consultation before further execution. The office wants to convene residents, urban mobility experts, accessibility advocates, BBMP officials, and elected representatives, while keeping the discussion fact-based and civil.",
-    response: "The office can turn public concern into a structured consultation. The co-pilot defines who should be invited, what evidence should be reviewed, which questions should be answered, and what record should be preserved after the meeting.",
-    affected: ["Stakeholder Coordination", "Public Communication", "Evidence Collection", "Institutional Memory"],
-    select: "Stakeholder Coordination",
-    updates: {
-      "Stakeholder Coordination": {
-        status: "ready_for_review",
-        note: "Consultation stakeholder map drafted.",
-        logged: ["Participants: residents, urban mobility experts, accessibility advocates, BBMP officials, and elected representatives."],
-        missing: ["Final attendee list.", "Moderator.", "Agenda.", "Evidence pre-read.", "Meeting record owner."],
-        decisions: ["Use a structured consultation format with evidence review and recorded action items."],
-        questions: ["Which voices are affected but under-represented in the current citizen group?"]
-      },
-      "Public Communication": {
-        status: "ready_for_review",
-        note: "Consultation message can be prepared.",
-        decisions: ["Invite public inputs while stating that the office is collecting facts before recommending a route."]
-      },
-      "Evidence Collection": {
-        status: "ready_for_review",
-        note: "Evidence pack required before consultation.",
-        missing: ["Pre-read summary.", "Verified project map.", "Known open questions."]
-      },
-      "Institutional Memory": {
-        status: "in_discovery",
-        note: "Consultation template can be reused.",
-        logged: ["Reusable need: consultation agenda, evidence pre-read, minutes format, decision log."],
-        questions: ["What template should future civic consultations inherit from this case?"]
-      }
-    }
-  },
-  {
-    title: "Parliamentary and policy route is assessed",
-    readiness: 57,
-    label: "Policy route assessed",
-    prompt: "Research finds the issue may connect to urban mobility coordination, pedestrian safety, accessibility, and disclosure of DPRs for major infrastructure projects. The team considers a policy note or parliamentary question if the central linkage is strong enough.",
-    response: "The issue can become more than a local grievance if it reveals a repeatable governance problem. The co-pilot captures the potential policy angle while keeping the local case and parliamentary route separate.",
-    affected: ["Parliamentary Research", "Scheme And Initiative Tracking", "Jurisdiction And Ownership", "Institutional Memory"],
-    select: "Parliamentary Research",
-    updates: {
-      "Parliamentary Research": {
-        status: "in_discovery",
-        note: "Potential policy angle identified.",
-        logged: ["Themes: urban mobility coordination, pedestrian safety, accessibility, DPR disclosure, public consultation standards."],
-        missing: ["Central linkage.", "Comparable city precedents.", "Legal or regulatory basis.", "Draft question or policy note outline."],
-        decisions: ["Keep the local case route separate from the policy route until the central linkage is verified."],
-        questions: ["Is this a constituency grievance, a city governance issue, or a national policy question?"]
-      },
-      "Scheme And Initiative Tracking": {
-        status: "in_discovery",
-        note: "Related public initiatives may provide context.",
-        missing: ["Relevant mobility schemes.", "Accessibility initiatives.", "Public-space improvement commitments.", "Known office initiatives in similar areas."]
-      },
-      "Jurisdiction And Ownership": {
-        status: "ready_for_review",
-        note: "Local and policy routes separated.",
-        decisions: ["Track city/state action and parliamentary research as different routes with different owners."]
-      },
-      "Institutional Memory": {
-        status: "in_discovery",
-        note: "Issue pattern may become reusable.",
-        logged: ["Potential pattern: infrastructure proposal with weak citizen-facing evidence and consultation record."]
-      }
-    }
-  },
-  {
-    title: "Governance gates communication",
-    readiness: 52,
-    label: "Review gate active",
-    prompt: "The office prepares a public update but marks it for human review because official documents are pending, citizen statements contain personal details, and the project authority has not yet responded.",
-    response: "The co-pilot lowers operating confidence until governance is clean. Public communication must separate verified facts, citizen concerns, office action, and pending responses.",
-    affected: ["Governance And Privacy", "Public Communication", "Evidence Collection", "Follow-Up And Closure"],
-    select: "Governance And Privacy",
-    updates: {
-      "Governance And Privacy": {
-        status: "blocked",
-        note: "Public update needs approval and privacy cleanup.",
-        logged: ["Documents pending.", "Citizen statements include personal details.", "Project authority response pending."],
-        missing: ["Reviewer approval.", "Anonymized citizen evidence.", "Fact/source table.", "Allowed claims list."],
-        risks: ["The office can create reputational and privacy risk by publishing unverified or personally identifiable information."],
-        questions: ["Which claims are verified enough for public communication today?"]
-      },
-      "Public Communication": {
+      "Workflow Discovery": {
         status: "retry_needed",
-        note: "Message needs fact boundaries.",
-        missing: ["Verified facts.", "Pending facts.", "Office action taken.", "Next update date."],
-        decisions: ["Use a factual holding update until documents and authority response arrive."]
+        note: "Exception paths now define scope.",
+        logged: ["Paths identified: routine requests, policy-sensitive exceptions, manager approval cases.", "Informal notes and side-channel escalation affect real operations."],
+        missing: ["Exception frequency.", "Approval thresholds.", "Handoff rules.", "Informal knowledge sources."],
+        risks: ["Automating the documented process can miss informal escalation paths."],
+        questions: ["Which exceptions should be automated, assisted, routed, or excluded?"]
       },
-      "Evidence Collection": {
-        status: "ready_for_review",
-        note: "Evidence must be source-tagged.",
-        missing: ["Source table and verification status for each claim."]
+      "Knowledge And Policy": {
+        status: "missing_evidence",
+        note: "Tacit knowledge needs capture.",
+        logged: ["Informal notes and local operating rules influence decisions."],
+        missing: ["Approved policy sources.", "Subject-matter expert review.", "Rules that must be deterministic."],
+        questions: ["Which rules are official policy, and which are team habits that need validation?"]
       },
-      "Follow-Up And Closure": {
+      "Orchestration": {
+        status: "missing_evidence",
+        note: "Branches and handoffs required.",
+        missing: ["Branch logic.", "Escalation path.", "Approval handoff payload.", "State preservation."]
+      },
+      "Governance": {
+        status: "at_risk",
+        note: "Policy-sensitive paths need control.",
+        risks: ["Policy exceptions may require review before the AI system can act or recommend."]
+      }
+    }
+  },
+  {
+    title: "Data and system reality constrains design",
+    readiness: 41,
+    label: "Feasibility scoped",
+    prompt: "IT confirms the workflow touches CRM, ticketing, document repositories, email, and a legacy approval system. Read access is likely available for some systems. Write access and identity permissions require a longer approval path.",
+    response: "The co-pilot narrows the first release. The pilot starts with read-heavy assistance, structured drafting, routing recommendations, and handoff summaries while write actions remain gated.",
+    affected: ["Data And Systems", "Solution Architecture", "Agent Role Design", "Deployment And Adoption"],
+    select: "Data And Systems",
+    updates: {
+      "Data And Systems": {
+        status: "missing_evidence",
+        note: "Multi-system workflow mapped.",
+        logged: ["Systems: CRM, ticketing, document repositories, email, legacy approval system.", "Read access likely available for some systems."],
+        missing: ["System owners.", "Field-level permissions.", "Freshness requirements.", "Identity model.", "Write-access approval path."],
+        risks: ["Pilot scope may expand ahead of write-permission and identity-control approval."],
+        questions: ["Which systems are required for v1, and which can be simulated or routed through human review?"]
+      },
+      "Solution Architecture": {
         status: "in_discovery",
-        note: "Next update date needed.",
-        missing: ["Follow-up owner.", "Authority response deadline.", "Citizen update cadence."]
+        note: "Architecture should be read-heavy first.",
+        decisions: ["Design v1 around read, retrieve, draft, summarize, classify, and route before autonomous writes."]
+      },
+      "Agent Role Design": {
+        status: "at_risk",
+        note: "Actions depend on permissions.",
+        missing: ["Allowed tools.", "Denied tools.", "Review-required actions."],
+        risks: ["Safe AI role design depends on explicit system permissions."]
+      },
+      "Deployment And Adoption": {
+        status: "missing_evidence",
+        note: "Tool placement pending.",
+        missing: ["Primary user workspace.", "Integration sequence.", "Support owner."]
       }
     }
   },
   {
-    title: "Follow-up plan turns concern into movement",
-    readiness: 71,
-    label: "Action plan reviewable",
-    prompt: "The office creates a follow-up plan: send document requests, schedule consultation, assign volunteer verification, track authority response, draft a factual public update, and prepare a policy note if the issue reveals a repeatable governance gap.",
-    response: "The case is now operational. The co-pilot turns concern into a sequence of responsible actions with owners, evidence gates, and closure criteria.",
-    affected: ["Follow-Up And Closure", "Public Communication", "Parliamentary Research", "Institutional Memory"],
-    select: "Follow-Up And Closure",
+    title: "Knowledge grounding becomes the real work",
+    readiness: 48,
+    label: "Knowledge risk visible",
+    prompt: "Subject-matter experts say the AI needs current policy, historical cases, escalation norms, approval thresholds, reusable client-context notes, and expert judgment.",
+    response: "The co-pilot stops treating knowledge as document upload. It maps which knowledge is retrievable context, which is policy, which is case precedent, and which is judgment that needs review or codification.",
+    affected: ["Knowledge And Policy", "Solution Architecture", "Governance", "Value And Readiness"],
+    select: "Knowledge And Policy",
     updates: {
-      "Follow-Up And Closure": {
-        status: "ready_for_review",
-        note: "Action plan has owners and sequence.",
-        logged: ["Actions: document requests, consultation scheduling, volunteer verification, authority response tracking, factual public update, policy note if justified."],
-        missing: ["Named owners.", "Dates.", "Escalation rules.", "Closure criteria."],
-        decisions: ["Move the case through evidence request, consultation, authority response, communication, and closure review."]
+      "Knowledge And Policy": {
+        status: "retry_needed",
+        note: "Knowledge sources need classification.",
+        logged: ["Needed knowledge: policy, historical cases, escalation norms, approval thresholds, client-context notes."],
+        missing: ["Source ownership.", "Update cadence.", "Policy approval process.", "Examples for evaluation.", "Expert-review workflow."],
+        risks: ["The system may retrieve documents while missing the right business rule or judgment boundary."],
+        questions: ["What knowledge can be retrieved, what must be encoded as rules, and what must stay under expert review?"]
       },
-      "Public Communication": {
+      "Solution Architecture": {
         status: "ready_for_review",
-        note: "Factual update can be drafted after review.",
-        decisions: ["Public update should report actions taken and pending facts without promising outcome."]
+        note: "RAG plus rules plus review.",
+        decisions: ["Use retrieval for context, explicit rules for approval thresholds, and human review for ambiguous judgment."]
       },
-      "Parliamentary Research": {
-        status: "ready_for_review",
-        note: "Policy note is conditional.",
-        decisions: ["Prepare a policy note only if evidence shows a repeatable governance gap beyond the local project."]
-      },
-      "Institutional Memory": {
-        status: "ready_for_review",
-        note: "Reusable operating pattern defined.",
-        logged: ["Reusable pattern: issue intake, authority map, evidence pack, consultation format, communication review, closure log."]
+      "Governance": {
+        status: "missing_evidence",
+        note: "Policy ownership needed.",
+        missing: ["Policy sign-off owner.", "Content update governance.", "Exception approval path."]
       }
     }
   },
   {
-    title: "Institutional memory becomes the final artifact",
-    readiness: 84,
-    label: "Case ready for execution",
-    prompt: "Before closing the intake phase, the office wants the case to leave behind a reusable evidence checklist, jurisdiction map, consultation template, communication review checklist, and handover note for future civic infrastructure cases.",
-    response: "The prototype treats each case as a way to strengthen the office. The output is not only a response to one issue, but an operating asset that future staff, volunteers, and leaders can reuse.",
-    affected: ["Institutional Memory", "Follow-Up And Closure", "Governance And Privacy", "Citizen Intake"],
-    select: "Institutional Memory",
+    title: "AI role is bounded deliberately",
+    readiness: 57,
+    label: "Co-pilot role defined",
+    prompt: "The team asks whether the AI should resolve cases directly. Advisory proposes a narrower v1: intake summarization, policy-aware retrieval, recommended next action, draft response, approval packet, and escalation summary.",
+    response: "The co-pilot defines AI as a bounded workflow actor. It can assist decisions, prepare artifacts, and route cases while final approval stays with accountable owners.",
+    affected: ["Agent Role Design", "Solution Architecture", "Orchestration", "Governance"],
+    select: "Agent Role Design",
     updates: {
-      "Citizen Intake": { status: "approved", note: "Case intake is structured and reviewable." },
-      "Jurisdiction And Ownership": { status: "approved", note: "Authority map is explicit." },
-      "Evidence Collection": { status: "ready_for_review", note: "Evidence checklist and sources are defined." },
-      "Stakeholder Coordination": { status: "ready_for_review", note: "Consultation route is drafted." },
-      "Scheme And Initiative Tracking": { status: "ready_for_review", note: "Related initiatives and schemes can be monitored." },
-      "Parliamentary Research": { status: "ready_for_review", note: "Policy route is conditional and evidence-led." },
-      "Public Communication": { status: "ready_for_review", note: "Public updates require fact and privacy review." },
-      "Follow-Up And Closure": {
-        status: "approved",
-        note: "Follow-up plan is execution-ready.",
-        decisions: ["Close intake only after owners, dates, authority response path, and citizen update cadence are documented."],
-        missing: ["Final dates and named staff owners."]
-      },
-      "Governance And Privacy": {
+      "Agent Role Design": {
         status: "ready_for_review",
-        note: "Review gates remain active.",
-        decisions: ["Human approval required before external communication or escalation using citizen evidence."]
+        note: "Bounded assistance role defined.",
+        logged: ["AI role: intake summarization, policy-aware retrieval, recommended next action, draft response, approval packet, escalation summary."],
+        decisions: ["V1 will support assisted resolution and approval preparation with accountable case closure."],
+        missing: ["Confidence thresholds.", "Forbidden actions.", "Human review triggers.", "Prompt and evaluation examples."]
       },
-      "Institutional Memory": {
-        status: "case_asset",
-        note: "Reusable office asset created.",
-        logged: ["Reusable outputs: evidence checklist, jurisdiction map, consultation template, communication review checklist, handover note."],
-        decisions: ["Store the case as a future template for civic infrastructure issues."],
-        missing: ["Final handover owner.", "Repository location.", "Review cadence."],
-        risks: ["Institutional learning will be lost if artifacts are not maintained after the immediate case pressure drops."],
-        questions: ["Who owns the template after this case is closed?"]
+      "Orchestration": {
+        status: "missing_evidence",
+        note: "Handoffs still need design.",
+        missing: ["Approval packet format.", "Escalation summary format.", "State transitions for returned cases."]
+      },
+      "Governance": {
+        status: "ready_for_review",
+        note: "Accountability remains human-led.",
+        decisions: ["Final approval stays with accountable owners for v1."]
+      }
+    }
+  },
+  {
+    title: "Orchestration exposes delivery complexity",
+    readiness: 63,
+    label: "Integration dependencies clear",
+    prompt: "Delivery review finds that cases can bounce between frontline teams, managers, and specialist reviewers. Each handoff needs context, reason codes, SLA status, and a record of AI-generated recommendations.",
+    response: "The co-pilot moves orchestration to the center. Production value depends on state, handoff payloads, approvals, retries, and auditability across the workflow.",
+    affected: ["Orchestration", "Deployment And Adoption", "Governance", "Value And Readiness"],
+    select: "Orchestration",
+    updates: {
+      "Orchestration": {
+        status: "ready_for_review",
+        note: "Handoff model defined.",
+        logged: ["Handoffs require context, reason codes, SLA status, and AI recommendation record."],
+        decisions: ["Treat workflow state and handoff payload as launch-critical design objects."],
+        missing: ["Returned-case path.", "SLA breach path.", "Reviewer feedback loop."],
+        risks: ["Good AI outputs lose production value when handoff state is lost."]
+      },
+      "Deployment And Adoption": {
+        status: "missing_evidence",
+        note: "User workspace matters.",
+        missing: ["Where handoff summaries appear.", "Training plan.", "Pilot support model."],
+        risks: ["A separate tool can reduce adoption when daily work happens inside the existing operating workflow."]
+      },
+      "Governance": {
+        status: "ready_for_review",
+        note: "Auditability tied to orchestration.",
+        missing: ["Audit log schema.", "Recommendation traceability."]
+      }
+    }
+  },
+  {
+    title: "Governance gates the pilot",
+    readiness: 58,
+    label: "Governance gate active",
+    prompt: "Risk review asks for access boundaries, audit logs, review rules, data retention, model-output disclaimers, incident handling, and a clear split between recommendation, preparation, and action.",
+    response: "The co-pilot lowers readiness until governance requirements are explicit. Governance changes what the AI can do, who reviews it, and how the workflow is deployed.",
+    affected: ["Governance", "Agent Role Design", "Data And Systems", "Deployment And Adoption"],
+    select: "Governance",
+    updates: {
+      "Governance": {
+        status: "blocked",
+        note: "Governance requirements must be resolved.",
+        logged: ["Risk requirements: access boundaries, audit logs, review rules, data retention, output disclaimers, incident handling."],
+        missing: ["Risk owner sign-off.", "Audit event fields.", "Human review matrix.", "Data retention policy.", "Incident response path."],
+        risks: ["Pilot launch may be blocked if autonomy and accountability are unclear."],
+        questions: ["Which outputs can be advisory, which require review, and which actions are prohibited in v1?"]
+      },
+      "Agent Role Design": {
+        status: "retry_needed",
+        note: "Role boundaries depend on review rules.",
+        missing: ["Recommendation vs preparation vs action boundary."]
+      },
+      "Data And Systems": {
+        status: "at_risk",
+        note: "Access model needs approval.",
+        missing: ["Role-based access mapping.", "Data retention and logging rules."]
+      },
+      "Deployment And Adoption": {
+        status: "at_risk",
+        note: "Pilot launch depends on governance clearance.",
+        risks: ["Delivery timeline may slip if governance is handled after build."]
+      }
+    }
+  },
+  {
+    title: "Deployment plan moves from demo to operating change",
+    readiness: 70,
+    label: "Deployment plan shaped",
+    prompt: "The pilot owner agrees to launch with two teams, limited case types, read-heavy system access, required manager approval for sensitive cases, weekly quality review, and in-workflow handoff summaries.",
+    response: "The co-pilot moves the project toward a scoped pilot candidate. The design now has limited users, limited workflows, bounded permissions, review gates, quality loops, and workflow placement.",
+    affected: ["Deployment And Adoption", "Governance", "Orchestration", "Value And Readiness"],
+    select: "Deployment And Adoption",
+    updates: {
+      "Deployment And Adoption": {
+        status: "ready_for_review",
+        note: "Scoped rollout plan defined.",
+        logged: ["Pilot scope: two teams, limited case types, read-heavy access, manager approval for sensitive cases, weekly quality review, in-workflow handoff summaries."],
+        decisions: ["Launch as a constrained operating pilot with bounded automation scope."],
+        missing: ["Pilot calendar.", "Training assets.", "Support rota.", "Success review cadence."]
+      },
+      "Governance": {
+        status: "ready_for_review",
+        note: "Governance controls reflected in rollout.",
+        decisions: ["Sensitive cases require manager approval during pilot."]
+      },
+      "Orchestration": {
+        status: "ready_for_review",
+        note: "Workflow placement is clear.",
+        decisions: ["Handoff summaries must appear inside the operating workflow."]
+      }
+    }
+  },
+  {
+    title: "Value proof becomes balanced",
+    readiness: 82,
+    label: "Pilot candidate",
+    prompt: "The sponsor wants productivity gain as the main metric. Advisory adds cycle time, first-pass quality, escalation quality, user adoption, review overturn rate, compliance exceptions, and rework within seven days.",
+    response: "The co-pilot marks this as a scoped pilot candidate. The scorecard tests productivity, quality, risk, adoption, and readiness for expansion.",
+    affected: ["Value And Readiness", "Opportunity Diagnosis", "Governance", "Deployment And Adoption"],
+    select: "Value And Readiness",
+    updates: {
+      "Opportunity Diagnosis": { status: "approved", note: "Opportunity is bounded and measurable." },
+      "Workflow Discovery": { status: "approved", note: "Core paths and exceptions are mapped." },
+      "Data And Systems": { status: "ready_for_review", note: "Pilot is scoped around available access." },
+      "Knowledge And Policy": { status: "ready_for_review", note: "Policy and expert review remain launch gates." },
+      "Solution Architecture": { status: "approved", note: "Architecture fits a read-heavy assisted workflow." },
+      "Agent Role Design": { status: "approved", note: "AI role is bounded." },
+      "Orchestration": { status: "ready_for_review", note: "Handoff and review loops are defined." },
+      "Governance": { status: "ready_for_review", note: "Governance controls are explicit launch gates." },
+      "Deployment And Adoption": { status: "ready_for_review", note: "Rollout plan is constrained and reviewable." },
+      "Value And Readiness": {
+        status: "pilot_candidate",
+        note: "Balanced pilot scorecard defined.",
+        logged: ["Metrics: productivity gain, cycle time, first-pass quality, escalation quality, adoption, review overturn rate, compliance exceptions, rework within seven days."],
+        decisions: ["Proceed only as a scoped pilot with explicit review gates and balanced value metrics."],
+        missing: ["Final acceptance thresholds.", "Baseline measurement window."],
+        risks: ["Productivity-only scoring can hide quality, risk, and adoption problems."],
+        questions: ["What threshold would justify expansion beyond the scoped pilot?"]
       }
     }
   }

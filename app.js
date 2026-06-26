@@ -1,7 +1,7 @@
 const workstreams = window.COPILOT_WORKSTREAMS;
 const steps = window.COPILOT_STEPS;
 
-let selected = "Citizen Intake";
+let selected = "Opportunity Diagnosis";
 let currentStep = 0;
 let appliedThrough = -1;
 let state = createInitialState();
@@ -253,7 +253,7 @@ els.backBtn.addEventListener("click", () => {
 els.resetBtn.addEventListener("click", () => {
   currentStep = 0;
   appliedThrough = -1;
-  selected = "Citizen Intake";
+  selected = "Opportunity Diagnosis";
   rebuildState();
   render();
 });
